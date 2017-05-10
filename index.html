@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html ng-app="lbb">
+  <head>
+    <meta charset="utf-8">
+    <title>Little Black Book Assignment</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="vendor/normalize.css">
+    <link rel="stylesheet" href="dist/css/app.css">
+  </head>
+  <body ng-controller="appController as app">
+    <div class="header text-center">
+      LBB Assignment
+    </div><!-- .header -->
+    <div class="container">
+      <div class="map">
+        <ui-gmap-google-map center="app.map.center"
+                            zoom="app.map.zoom"
+                            draggable="true">
+          <ui-gmap-marker coords="app.marker.coords"
+                          options="app.marker.options"
+                          events="app.marker.events"
+                          idkey="app.marker.id">
+          </ui-gmap-marker>
+        </ui-gmap-google-map>
+      </div><!-- .map -->
+      <div class="gallery">
+        <small>
+          About {{app.imagesMetaData.total}} images found. Showing from
+          {{ (app.imagesMetaData.page - 1) * 20 }} to {{ app.imagesMetaData.page * 20 }}.
+        </small>
+        <div class="photo-grid">
+          <div class="loader" ng-show="app.isLoading"></div>
+          <div class="img" ng-repeat="image in app.images track by image.id"
+               ng-hide="app.isLoading">
+            <img ng-src="https://farm{{image.farm}}.staticflickr.com/{{image.server}}/{{image.id}}_{{image.secret}}_q.jpg"
+                 alt="{{image.title}}"
+                 ng-click="app.showImage(image)">
+          </div>
+        </div><!-- .photo-grid -->
+        <div class="pagination">
+          <button class="btn first"
+                  ng-click="app.firstPage()">
+            <span>First </span>
+          </button>
+          <button class="btn prev"
+                  ng-click="app.prevPage()">
+            <span>Previous </span>
+          </button>
+          <button class="btn next"
+                  ng-click="app.nextPage()">
+            <span>Next </span>
+          </button>
+          <button class="btn last"
+                  ng-click="app.lastPage()">
+            <span>Last </span>
+          </button>
+        </div><!-- .pagination -->
+      </div><!-- .gallery -->
+    </div><!-- .container -->
+
+    <div class="modal" id="modal">
+      <span class="close" onclick="document.getElementById('modal').style.display='none'">
+        &times;
+      </span>
+      <img ng-src="https://farm{{app.modalImg.farm}}.staticflickr.com/{{app.modalImg.server}}/{{app.modalImg.id}}_{{app.modalImg.secret}}_z.jpg"
+           alt="{{app.modalImg.title}}"
+           class="modal-content">
+    </div><!-- .modal -->
+
+    <!-- Core Dependencies -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/lodash/4.17.4/lodash.min.js"></script>
+    <script src="vendor/angular-simple-logger.min.js"></script>
+    <script src="vendor/angular-google-maps.min.js"></script>
+
+    <!-- js bundle -->
+    <script src="dist/js/bundle.js"></script>
+  </body>
+</html>
