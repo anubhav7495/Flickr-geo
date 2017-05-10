@@ -4,10 +4,13 @@
     <meta charset="utf-8">
     <title>Little Black Book Assignment</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="vendor/normalize.css">
+    <link rel="stylesheet" href="vendor/normalizeat.css">
     <link rel="stylesheet" href="dist/css/app.css">
+    <style media="screen">
+      [ng-cloak] { display: none; }
+    </style>
   </head>
-  <body ng-controller="appController as app">
+  <body ng-controller="appController as app" ng-cloak>
     <div class="header text-center">
       LBB Assignment
     </div><!-- .header -->
