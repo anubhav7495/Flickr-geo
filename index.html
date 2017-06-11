@@ -6,12 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="vendor/normalize.css">
     <link rel="stylesheet" href="dist/css/app.css">
+    <style media="screen">
+      [ng-cloak] { display: none; }
+    </style>
   </head>
   <body ng-controller="appController as app">
     <div class="header text-center">
-      LBB Assignment
+      Flickr Geo
     </div><!-- .header -->
-    <div class="container">
+    <div class="container" ng-cloak>
       <div class="map">
         <ui-gmap-google-map center="app.map.center"
                             zoom="app.map.zoom"
