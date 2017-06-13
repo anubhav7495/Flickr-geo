@@ -1,7 +1,7 @@
 'use-strict';
 
 angular
-  .module('lbb')
+  .module('app')
   .factory('Flickr', flickrService);
 
 flickrService.$inject = ['$http', '$q'];

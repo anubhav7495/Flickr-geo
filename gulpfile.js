@@ -32,10 +32,11 @@ gulp.task('jshint', ['clean'], function() {
 });
 
 gulp.task('minifyCSS', function() {
-  return gulp.src('src/**/app.css')
+  return gulp.src('src/**/*.css')
+             .pipe(concat('app.css'))
              .pipe(autoprefixer())
              .pipe(minifyCSS({compatibility: 'ie8'}))
-             .pipe(gulp.dest('dist/'));
+             .pipe(gulp.dest('dist/css/'));
 });
 
 gulp.task('minifyJS', ['jshint'], function() {

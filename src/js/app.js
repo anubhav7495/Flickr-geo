@@ -1,7 +1,7 @@
 'use-strict';
 
 angular
-  .module('lbb', ['uiGmapgoogle-maps'])
+  .module('app', ['uiGmapgoogle-maps'])
   .config(appConfig);
 
 appConfig.$inject = ['uiGmapGoogleMapApiProvider', '$qProvider'];

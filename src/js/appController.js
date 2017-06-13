@@ -1,7 +1,7 @@
 'use-strict';
 
 angular
-  .module('lbb')
+  .module('app')
   .controller('appController', appController);
 
 appController.$inject = ['Flickr'];
